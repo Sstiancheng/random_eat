@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>随机选择餐厅</title>
+    <style>
+        body {
+            background-color: black;
+            background-image: url(https://i.imgur.com/N3aHkGJ.png);
+            background-repeat: repeat;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: bold;
+            text-align: center;
+            color: #ff00ff;
+            text-shadow: 2px 2px 4px #000000;
+            margin-top: 40px;
+            animation-name: rainbow;
+            animation-duration: 2s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes rainbow {
+            0% {
+                color: #ff00ff;
+            }
+            16.7% {
+                color: #ff0000;
+            }
+            33.3% {
+                color: #ffa500;
+            }
+            50% {
+                color: #ffff00;
+            }
+            66.7% {
+                color: #00ff00;
+            }
+            83.3% {
+                color: #0000ff;
+            }
+            100% {
+                color: #ff00ff;
+            }
+        }
+
+        button {
+            background-color: #ff00ff;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 10px 20px;
+            margin-top: 40px;
+            cursor: pointer;
+            box-shadow: 2px 2px 4px #000000;
+            animation-name: rainbow;
+            animation-duration: 2s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        button:hover {
+            background-color: #ffa500;
+        }
+
+        #result {
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+            margin-top: 40px;
+            animation-name: rainbow;
+            animation-duration: 2s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes meteor {
+            0% {
+                transform: translate(-200px, -200px);
+            }
+            100% {
+                transform: translate(100vw, 100vh);
+            }
+        }
+
+        .meteor {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background-color: white;
+            box-shadow: 0 0 10px white, 0 0 20px white, 0 0 40px white, 0 0 80px white;
+            animation-name: meteor;
+            animation-duration: 2s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-delay: calc(2s * var(--i));
+        }
+    </style>
+</head>
+<body>
+    <h1>今天吃什么？</h1>
+    <button onclick="randomRestaurant()">点我选择餐厅</button>
+    <div id="result"></div>
+
+    <script>
+        function randomRestaurant() {
+            var restaurants = ["北区餐厅", "西区餐厅", "东区餐厅", "中区餐厅", "南区餐厅", "拉德芳斯小吃街", "首义餐厅"];
+            var randomIndex = Math.floor(Math.random() * restaurants.length);
+            var resultElement = document.getElementById("result");
+            resultElement.innerText = "今天去吃：" + restaurants[randomIndex];
+        }
+
+        for (var i = 0; i < 30; i++) {
+            var meteor = document.createElement("div");
+            meteor.classList.add("meteor");
+            meteor.style.setProperty("--i", i);
+            document.body.appendChild(meteor);
+        }
+    </script>
+</body>
+</html>
